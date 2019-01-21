@@ -9,17 +9,14 @@ import java.util.List;
 
 public class Database {
     private static Database INSTANCE;
-    private List<People> people;
-    //private String path;
+    private List<Person> people;
 
-    public void readPeople(String path) throws Exception {
-        File file = new File(path);
+    public void readPeople(File file) throws Exception {
         String line;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 
             while (!(line = br.readLine()).isEmpty()) {
-                String []test = line.split(",");
-                people.add(new People(test[0],test[1],test[2],test[3],test[4],test[5],test[6]));
+                people.add(toPerson(line));
             }
 
         } catch (IOException e) {
@@ -28,8 +25,13 @@ public class Database {
 
     }
 
+    Person toPerson(String line) {
+        String[] array = line.split(",");
+        return new Person(array[0], array[1], array[2], array[3], array[4], array[5], array[6]);
+    }
+
     public void displayPeople() {
-        for(People person : people){
+        for (Person person : people) {
             System.out.println(person);
         }
     }

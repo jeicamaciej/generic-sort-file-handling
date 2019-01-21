@@ -1,6 +1,6 @@
 package jeicam;
 
-public class People {
+public class Person {
 
     private String name;
     private String surname;
@@ -10,7 +10,7 @@ public class People {
     private String weight;
     private String age;
 
-    public People(String name, String surname, String sex, String personalId, String height, String weight, String age) {
+    public Person(String name, String surname, String sex, String personalId, String height, String weight, String age) {
         this.name = name;
         this.surname = surname;
         this.sex = sex;
@@ -19,13 +19,13 @@ public class People {
         this.weight = weight;
         this.age = age;
     }
-    public People(String name) {
+    public Person(String name) {
         this.name = name;
     }
 
     @Override
     public String toString() {
-        return "People{" +
+        return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", sex='" + sex + '\'' +
