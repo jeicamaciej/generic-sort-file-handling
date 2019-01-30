@@ -1,5 +1,7 @@
 package jeicam;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,15 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
+
     private static Database INSTANCE;
     private List<Person> people;
+    private DataValidation dataValidation;
 
-    public void readPeople(File file) throws Exception {
+    public void readPeople(@NotNull File file) throws Exception {
         String line;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 
             while (!(line = br.readLine()).isEmpty()) {
-                people.add(toPerson(line));
+                if (null != toPerson(line)) {
+                    people.add(toPerson(line));
+                }
             }
 
         } catch (IOException e) {
@@ -25,9 +31,11 @@ public class Database {
 
     }
 
-    Person toPerson(String line) {
-        String[] array = line.split(",");
+    Person toPerson(@NotNull String line) throws DataException {
+
+        String array[] = dataValidation.validateString(line.split(","));
         return new Person(array[0], array[1], array[2], array[3], array[4], array[5], array[6]);
+
     }
 
     public void displayPeople() {
@@ -36,9 +44,9 @@ public class Database {
         }
     }
 
-
     private Database() {
         this.people = new ArrayList<>();
+        this.dataValidation = new DataValidation();
     }
 
     public static Database getInstance() {
@@ -50,6 +58,10 @@ public class Database {
             }
         }
         return INSTANCE;
+    }
+
+    public List<Person> getPeople() {
+        return people;
     }
 
 }

@@ -4,7 +4,7 @@ public class Person {
 
     private String name;
     private String surname;
-    private String sex; //lol sex ruchanie 69
+    private String sex;
     private String personalId;
     private String height;
     private String weight;
@@ -34,5 +34,61 @@ public class Person {
                 ", weight=" + weight +
                 ", age=" + age +
                 '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getPersonalId() {
+        return personalId;
+    }
+
+    public void setPersonalId(String personalId) {
+        this.personalId = personalId;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 }
