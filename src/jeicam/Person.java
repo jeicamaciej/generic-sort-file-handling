@@ -19,6 +19,7 @@ public class Person {
         this.weight = weight;
         this.age = age;
     }
+
     public Person(String name) {
         this.name = name;
     }

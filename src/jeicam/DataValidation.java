@@ -18,15 +18,12 @@ public class DataValidation {
     }
 
     public String[] validateString(@NotNull String[] array) throws DataException {
-
         if (array.length != 7) {
             throw new DataException("incorrect input format");
         }
-
         Matcher matcher;
-
         for (int i = 0; i < 7; i++) {
-            if (i >= 0 && i < 3) {
+            if (i < 3) {
                 matcher = StringPattern.matcher(array[i]);
                 if (!matcher.matches()) {
                     throw new DataException("incorrect input type");

@@ -18,24 +18,19 @@ public class Database {
     public void readPeople(@NotNull File file) throws Exception {
         String line;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-
             while (!(line = br.readLine()).isEmpty()) {
                 if (null != toPerson(line)) {
                     people.add(toPerson(line));
                 }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     Person toPerson(@NotNull String line) throws DataException {
-
         String array[] = dataValidation.validateString(line.split(","));
         return new Person(array[0], array[1], array[2], array[3], array[4], array[5], array[6]);
-
     }
 
     public void displayPeople() {
@@ -63,5 +58,4 @@ public class Database {
     public List<Person> getPeople() {
         return people;
     }
-
 }
