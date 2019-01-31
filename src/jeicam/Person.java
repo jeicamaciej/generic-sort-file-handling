@@ -1,14 +1,18 @@
 package jeicam;
 
-public class Person {
+import org.jetbrains.annotations.NotNull;
 
-    private String name;
-    private String surname;
-    private String sex;
-    private String personalId;
-    private String height;
-    private String weight;
-    private String age;
+import java.util.Objects;
+
+public class Person implements Comparable <Person>{
+
+    private final String name;
+    private final String surname;
+    private final String sex;
+    private final String personalId;
+    private final String height;
+    private final String weight;
+    private final String age;
 
     public Person(String name, String surname, String sex, String personalId, String height, String weight, String age) {
         this.name = name;
@@ -20,9 +24,34 @@ public class Person {
         this.age = age;
     }
 
-    public Person(String name) {
-        this.name = name;
+    public String getName() {
+        return name;
     }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getPersonalId() {
+        return personalId;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
 
     @Override
     public String toString() {
@@ -37,59 +66,27 @@ public class Person {
                 '}';
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(name, person.name) &&
+                Objects.equals(surname, person.surname) &&
+                Objects.equals(sex, person.sex) &&
+                Objects.equals(personalId, person.personalId) &&
+                Objects.equals(height, person.height) &&
+                Objects.equals(weight, person.weight) &&
+                Objects.equals(age, person.age);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, sex, personalId, height, weight, age);
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getPersonalId() {
-        return personalId;
-    }
-
-    public void setPersonalId(String personalId) {
-        this.personalId = personalId;
-    }
-
-    public String getHeight() {
-        return height;
-    }
-
-    public void setHeight(String height) {
-        this.height = height;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
+    @Override
+    public int compareTo(@NotNull Person person) {
+        return Integer.parseInt(this.getAge()) - Integer.parseInt(person.getAge());
     }
 }
