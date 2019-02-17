@@ -9,10 +9,10 @@ public class BubbleSort<T extends Comparable<T>> implements Sorter<T> {
 
     @Override
     public Collection<T> sort(Collection<T> collection) {
-
+        long startTime = System.nanoTime();
         List<T> newlist = new ArrayList<>(collection);
         boolean swap;
-        long startTime = System.nanoTime();
+
         for (int j = newlist.size() - 1; j > 0; j++) {
             swap = false;
             for (int i = 0; i < newlist.size() - 1; i++) {
