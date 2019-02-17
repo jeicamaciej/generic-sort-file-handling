@@ -1,5 +1,7 @@
 package jeicam;
 
+import jeicam.sort.BubbleSort;
+
 import java.io.File;
 
 public class Main {
@@ -8,7 +10,7 @@ public class Main {
         Database database = Database.getInstance();
         database.readPeople(new File(args[0]));
         database.displayPeople();
-        //database.sortAndDisplayPeople(new BubbleSort());
+        database.sortAndDisplayPeople(new BubbleSort());
     }
 }
 

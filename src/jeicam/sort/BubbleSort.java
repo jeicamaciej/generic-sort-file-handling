@@ -2,21 +2,31 @@ package jeicam.sort;
 
 import jeicam.Sorter;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 
-public class BubbleSort <T extends Comparable> implements Sorter <T>  {
+public class BubbleSort <T extends Comparable<T>> implements Sorter <T>  {
 
     @Override
     public Collection<T> sort(Collection<T> collection) {
+
         List <T> newlist = new ArrayList<>(collection);
+        boolean swap;
+        for (int j=newlist.size()-1;j>0;j++) {
+        swap = false;
+            for (int i = 0; i < newlist.size() - 1; i++) {
 
-        for (int i=0;i<newlist.size();i++) {
-            //newlist.get(i).compareTo(i+1);
+                if (newlist.get(i).compareTo(newlist.get(i + 1)) > 0) {
+                    Collections.swap(newlist, 0, 1);
+                    swap = true;
+                }
+
+            }
+        if (!swap){
+            break;
         }
-
+        
+        }
         return newlist;
     }
 }
