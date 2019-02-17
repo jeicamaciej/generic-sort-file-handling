@@ -14,6 +14,7 @@ public class DataValidation {
     private static Pattern StringPattern = Pattern.compile(STRING_PATTERN_FORMAT);
     private static Pattern IntegerPattern = Pattern.compile(INTEGER_PATTERN_FORMAT);
 
+
     public DataValidation() {
     }
 

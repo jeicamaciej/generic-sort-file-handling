@@ -17,7 +17,7 @@ public class Database {
     private DataValidation dataValidation;
     private static String CSV_FIELD_SEPARATOR = ",";
 
-    Collection sortAndDisplayPeople(Sorter sorter){
+    Collection sortAndDisplayPeople(Sorter sorter) {
         return sorter.sort(people);
     }
 
