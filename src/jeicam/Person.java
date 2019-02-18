@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class Person implements Comparable <Person>{
+public class Person implements Comparable<Person> {
 
     private final String name;
     private final String surname;

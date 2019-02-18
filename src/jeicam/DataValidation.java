@@ -2,6 +2,7 @@ package jeicam;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,7 +10,7 @@ public class DataValidation {
 
     private final static int CSV_LINE_ELEMENTS_NUMBER = 7;
     private final static int CSV_STRING_ELEMENTS_NUMBER = 3;
-    private final static String STRING_PATTERN_FORMAT = "[a-zA-z]+([ '-][a-zA-Z]+)*";
+    private final static String STRING_PATTERN_FORMAT = "[a-zA-z]+([a-zA-Z]+)*";
     private final static String INTEGER_PATTERN_FORMAT = "^[1-9]\\d*$";
     private static Pattern StringPattern = Pattern.compile(STRING_PATTERN_FORMAT);
     private static Pattern IntegerPattern = Pattern.compile(INTEGER_PATTERN_FORMAT);
@@ -38,6 +39,15 @@ public class DataValidation {
         }
         return array;
     }
+
+    public File fileContentValidation(File file) throws DataException {
+        if (file.length() == 0) {
+            throw new DataException("the file is empty");
+        } else {
+            return file;
+        }
+    }
+
 }
 
 class DataException extends Exception {

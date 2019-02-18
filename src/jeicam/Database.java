@@ -15,7 +15,7 @@ public class Database {
     private static Database INSTANCE;
     private List<Person> people;
     private DataValidation dataValidation;
-    private static String CSV_FIELD_SEPARATOR = ",";
+    private final static String CSV_FIELD_SEPARATOR = ",";
 
     Collection sortAndDisplayPeople(Sorter sorter) {
         return sorter.sort(people);
@@ -23,7 +23,7 @@ public class Database {
 
     public void readPeople(@NotNull File file) throws Exception {
         String line;
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(dataValidation.fileContentValidation(file)))) {
             while (!(line = br.readLine()).isEmpty()) {
                 if (toPerson(line) != null) {
                     people.add(toPerson(line));
@@ -34,7 +34,7 @@ public class Database {
         }
     }
 
-    Person toPerson(@NotNull String line) throws DataException {
+    private Person toPerson(@NotNull String line) throws DataException {
         String array[] = dataValidation.csvLineArrayValidation(line.split(CSV_FIELD_SEPARATOR));
         return new Person(array[0], array[1], array[2], array[3], array[4], array[5], array[6]);
     }

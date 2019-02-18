@@ -11,6 +11,7 @@ public class Main {
         database.readPeople(new File(args[0]));
        // database.displayPeople();
         database.sortAndDisplayPeople(new BubbleSort());
+
     }
 }
 
