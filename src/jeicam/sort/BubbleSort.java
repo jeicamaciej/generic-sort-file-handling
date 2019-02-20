@@ -33,7 +33,7 @@ public class BubbleSort<T extends Comparable<T>> implements Sorter<T> {
             System.out.println(element);
         }
 
-        System.out.println("Bubble sort took: " + (new TimeValueFormatter().nsToMsValue(endTime - startTime)) + " ms");
+        System.out.println("Bubble sort took: " + (TimeValueFormatter.nsToMsValue(endTime - startTime)) + " ms");
 
         return sortedList;
     }
