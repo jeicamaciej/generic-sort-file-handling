@@ -9,24 +9,28 @@ import java.util.Collections;
 import java.util.List;
 
 public class BubbleSort<T extends Comparable<T>> implements Sorter<T> {
+
     @Override
-    public Collection<T> sort(Collection<T> collection) {
+    public Collection<T> sort(Collection<T> collection, String fieldName) {
+
         final long startTime = System.nanoTime();
         final List<T> sortedList = new ArrayList<>(collection);
-        boolean swap;
+        boolean isSwapped;
 
         for (int j = sortedList.size() - 1; j > 0; j++) {
-            swap = false;
+            isSwapped = false;
             for (int i = 0; i < sortedList.size() - 1; i++) {
-                if (sortedList.get(i).compareTo(sortedList.get(i + 1)) > 0) {
+                if (getFieldValue(sortedList.get(i), fieldName).compareTo(getFieldValue(sortedList.get(i + 1), fieldName)) > 0) {
+
                     Collections.swap(sortedList, i, i + 1);
-                    swap = true;
+                    isSwapped = true;
                 }
             }
-            if (!swap) {
+            if (!isSwapped) {
                 break;
             }
         }
+
         final long endTime = System.nanoTime();
 
         for (T element : sortedList) {
@@ -34,11 +38,9 @@ public class BubbleSort<T extends Comparable<T>> implements Sorter<T> {
         }
 
         System.out.println("Bubble sort took: " + (TimeValueFormatter.nsToMsValue(endTime - startTime)) + " ms");
-
         return sortedList;
     }
 }
-
 
 
 

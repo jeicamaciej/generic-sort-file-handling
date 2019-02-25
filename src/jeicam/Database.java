@@ -17,14 +17,14 @@ public class Database {
     private DataValidation dataValidation;
     private final static String CSV_FIELD_SEPARATOR = ",";
 
-    Collection sortAndDisplayPeople(Sorter sorter) {
-        return sorter.sort(people);
+    Collection sortAndDisplayPeople(Sorter sorter, String fieldName){
+        return sorter.sort(people,fieldName);
     }
 
     public void readPeople(@NotNull File file) throws Exception {
         String line;
         try (BufferedReader br = new BufferedReader(new FileReader(dataValidation.fileContentValidation(file)))) {
-            while (!(line = br.readLine()).isEmpty()) {
+            while ((line = br.readLine())!=null) {
                 if (toPerson(line) != null) {
                     people.add(toPerson(line));
                 }

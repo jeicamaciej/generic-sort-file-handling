@@ -86,7 +86,7 @@ public class Person implements Comparable<Person> {
     }
 
     @Override
-    public int compareTo(@NotNull Person person) {
-        return Integer.parseInt(this.getAge()) - Integer.parseInt(person.getAge());
+    public int compareTo(@NotNull Person o) {
+        return 0;
     }
 }
