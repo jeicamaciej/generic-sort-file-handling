@@ -17,8 +17,12 @@ public class Database {
     private DataValidation dataValidation;
     private final static String CSV_FIELD_SEPARATOR = ",";
 
-    Collection sortAndDisplayPeople(Sorter sorter, String fieldName){
-        return sorter.sort(people,fieldName);
+    Collection sortAndDisplayPeople(Sorter sortable, String fieldName){
+        if(fieldName==null){
+            System.out.println("fieldName == null, sorting is impossible, same collection returned");
+            return people;
+        }
+        return sortable.sort(people,fieldName);
     }
 
     public void readPeople(@NotNull File file) throws Exception {

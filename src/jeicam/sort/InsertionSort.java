@@ -11,7 +11,7 @@ public class InsertionSort<T extends Comparable<T>> implements Sorter<T> {
 
     @Override
     public Collection<T> sort(Collection<T> collection, String fieldName) {
-        
+
         final long startTime = System.nanoTime();
         final List<T> sortedList = new ArrayList<>(collection);
 

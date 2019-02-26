@@ -19,7 +19,6 @@ public interface Sorter<T extends Comparable> {
      */
     Collection<T> sort(@NotNull Collection<T> collection, String fieldName);
 
-
     /**
      * method checks if the object's class implements Comparable interface
      * if not, returns null
