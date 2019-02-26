@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile 'org.jetbrains:annotations:16.0.2'
+    compile 'com.sun.xml.bind:jaxb-impl:2.2.11'
+}
