@@ -1,18 +1,32 @@
-package jeicam;
+package main.java.jeicam;
 
 import org.jetbrains.annotations.NotNull;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import java.util.ArrayList;
 import java.util.Objects;
 
+@XmlRootElement
+@XmlSeeAlso(ArrayList.class)
 public class Person implements Comparable<Person> {
 
-    private final String name;
-    private final String surname;
-    private final String sex;
-    private final String personalId;
-    private final String height;
-    private final String weight;
-    private final String age;
+    @XmlElement(name = "name")
+    private  String name;
+    @XmlElement(name = "surname")
+    private String surname;
+    @XmlElement(name = "sex")
+    private  String sex;
+    @XmlAttribute(name = "id")
+    private  String personalId;
+    @XmlElement(name = "height")
+    private  String height;
+    @XmlElement(name = "weight")
+    private  String weight;
+    @XmlElement(name = "age")
+    private  String age;
 
     public Person(String name, String surname, String sex, String personalId, String height, String weight, String age) {
         this.name = name;
@@ -22,6 +36,9 @@ public class Person implements Comparable<Person> {
         this.height = height;
         this.weight = weight;
         this.age = age;
+    }
+
+    public Person() {
     }
 
     public String getName() {

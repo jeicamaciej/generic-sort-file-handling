@@ -1,13 +1,12 @@
-package jeicam;
+package main.java.jeicam;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Database {
@@ -17,18 +16,34 @@ public class Database {
     private DataValidation dataValidation;
     private final static String CSV_FIELD_SEPARATOR = ",";
 
-    Collection sortAndDisplayPeople(Sorter sortable, String fieldName){
-        if(fieldName==null){
+    public void peopleToXML(List<Person> sortedList, String fileName) throws JAXBException {
+        try {
+            FileOutputStream fos = new FileOutputStream(fileName);
+            JAXBContext jaxbContext = JAXBContext.newInstance(main.java.jeicam.Person.class);
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            for(int i=0;i< sortedList.size();i++) {
+                marshaller.marshal(sortedList.get(i), fos);
+            }
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    List sortAndDisplayPeople(Sorter sortable, String fieldName) {
+        if (fieldName == null) {
             System.out.println("fieldName == null, sorting is impossible, same collection returned");
             return people;
         }
-        return sortable.sort(people,fieldName);
+        return sortable.sort(people, fieldName);
     }
 
     public void readPeople(@NotNull File file) throws Exception {
         String line;
         try (BufferedReader br = new BufferedReader(new FileReader(dataValidation.fileContentValidation(file)))) {
-            while ((line = br.readLine())!=null) {
+            while ((line = br.readLine()) != null) {
                 if (toPerson(line) != null) {
                     people.add(toPerson(line));
                 }
@@ -64,7 +79,6 @@ public class Database {
         }
         return INSTANCE;
     }
-
     public List<Person> getPeople() {
         return people;
     }

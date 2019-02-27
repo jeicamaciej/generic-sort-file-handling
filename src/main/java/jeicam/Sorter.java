@@ -1,9 +1,9 @@
-package jeicam;
+package main.java.jeicam;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
-import java.util.Collection;
+import java.util.List;
 
 public interface Sorter<T extends Comparable> {
     /**
@@ -17,7 +17,7 @@ public interface Sorter<T extends Comparable> {
      * @param fieldName object's property used to compare elements while sorting
      * @return new sorted collection
      */
-    Collection<T> sort(@NotNull Collection<T> collection, String fieldName);
+    List<T> sort(@NotNull List<T> collection, String fieldName);
 
     /**
      * method checks if the object's class implements Comparable interface

@@ -1,4 +1,4 @@
-package jeicam;
+package main.java.jeicam;
 
 import org.jetbrains.annotations.NotNull;
 

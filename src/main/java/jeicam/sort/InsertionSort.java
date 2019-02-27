@@ -1,16 +1,15 @@
-package jeicam.sort;
+package main.java.jeicam.sort;
 
-import jeicam.Sorter;
-import jeicam.TimeValueFormatter;
+import main.java.jeicam.Sorter;
+import main.java.jeicam.TimeValueFormatter;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class InsertionSort<T extends Comparable<T>> implements Sorter<T> {
 
     @Override
-    public Collection<T> sort(Collection<T> collection, String fieldName) {
+    public List<T> sort(List<T> collection, String fieldName) {
 
         final long startTime = System.nanoTime();
         final List<T> sortedList = new ArrayList<>(collection);

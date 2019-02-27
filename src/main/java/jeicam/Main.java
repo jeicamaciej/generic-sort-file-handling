@@ -1,18 +1,17 @@
-package jeicam;
+package main.java.jeicam;
 
-import jeicam.sort.QuickSort;
-import jeicam.sort.BubbleSort;
+import main.java.jeicam.sort.BubbleSort;
 
 import java.io.File;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
+
         Database database = Database.getInstance();
         database.readPeople(new File(args[0]));
         //database.displayPeople();
-        database.sortAndDisplayPeople(new BubbleSort());
-        database.sortAndDisplayPeople(new QuickSort());
+        database.peopleToXML(database.sortAndDisplayPeople(new BubbleSort(),"name"),"dupa.xml");
     }
 }
 

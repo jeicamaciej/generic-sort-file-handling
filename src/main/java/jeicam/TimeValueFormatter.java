@@ -1,4 +1,4 @@
-package jeicam;
+package main.java.jeicam;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
