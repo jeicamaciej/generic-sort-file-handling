@@ -1,4 +1,3 @@
-# segregacja_rasowa
 
 Stworzenie aplikacji, ktora odczytuje dane z pliku csv. Sciezke do pliku bedziesz
 podawac w parametrach startowych apki i musisz to poprawnie odczytac, sparsowac
